@@ -24,6 +24,8 @@ end
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
 
+require 'delayed_job_test_enhancements'
+
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{RAILS_ROOT}/spec/support/**/*.rb"].each {|f| require f}

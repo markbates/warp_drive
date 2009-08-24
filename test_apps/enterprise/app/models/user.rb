@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
     Postman.deliver_password_reset_instructions(self)
   end
   
+  def hello
+    "hello: #{self.login}"
+  end
+  
+  def bye
+    "bye: #{self.login}"
+  end
+  
 end

@@ -9,6 +9,7 @@ group(:default) do |g|
   g.add('semanticart-is_paranoid', {:version => ">=0.9.0", :require => "is_paranoid"})
   g.add('authlogic', {:load => true, :version => ">=2.1.1", :require => "authlogic"})
   g.add('paperclip', {:version => ">=2.1.2", :require => "paperclip"})
+  g.add('markbates-delayed_job_extras', :load => false, :require => 'delayed_job_extras', :source => 'http://gems.github.com')
 end
 
 alias_group(:production, :default)

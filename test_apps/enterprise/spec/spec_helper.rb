@@ -6,6 +6,7 @@ require 'spec/autorun'
 require 'spec/rails'
 require 'remarkable_rails'
 require 'authlogic/test_case'
+require 'delayed_job_test_enhancements'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
