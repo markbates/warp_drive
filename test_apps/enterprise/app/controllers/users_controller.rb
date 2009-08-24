@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      Postman.deliver_welcome_email(@user)
+      PostmanWorker.deliver_welcome_email(@user)
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
     else
