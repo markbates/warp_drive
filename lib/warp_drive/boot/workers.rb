@@ -65,7 +65,10 @@ module WarpDrive
         
         [WarpDrive::Path.config.database.yml.to_s, 
          File.join(RAILS_ROOT, 'config', 'database.yml')].each do |yml_path|
-          db_opts.recursive_merge!(YAML::load(ERB.new(File.read(yml_path)).result)) if File.exists?(yml_path)
+           if File.exists?(yml_path)
+             opts = YAML::load(ERB.new(File.read(yml_path)).result)
+             db_opts.recursive_merge!(opts) if opts
+           end
         end
         
         db_opts
