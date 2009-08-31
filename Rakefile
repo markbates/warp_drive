@@ -7,7 +7,7 @@ Gemstub.gem_spec do |s|
   s.email = 'mark@markbates.com'
   s.homepage = 'http://www.metabates.com'
   s.description = %{Screw Rails Engines! Why not install a Warp Drive! Completely bundle up an ENTIRE Rails application into a gem, then load it into another application! It's that easy!}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
   s.rubyforge_project = "magrathea"
   s.add_dependency('configatron')
   s.add_dependency('genosaurus')
