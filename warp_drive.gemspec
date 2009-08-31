@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{warp_drive}
-  s.version = "0.1.0.20090831153601"
+  s.version = "0.1.1.20090831154458"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{mark@markbates.com}
   s.executables = ["warpify", "install_warp_drive"]
   s.extra_rdoc_files = ["README", "LICENSE"]
-  s.files = ["lib/tasks/compile.rake", "lib/warp_drive/boot/method_list.rb", "lib/warp_drive/boot/migration_override.rb", "lib/warp_drive/boot/procs.rb", "lib/warp_drive/boot/rails_init.rb", "lib/warp_drive/boot/workers.rb", "lib/warp_drive/boot.rb", "lib/warp_drive/configure.rb", "lib/warp_drive/path.rb", "lib/warp_drive/tasks.rb", "lib/warp_drive/templates/lib/%=app%/boot.rb.template", "lib/warp_drive/templates/lib/%=app%/tasks.rb.template", "lib/warp_drive/templates/lib/%=app%.rb.template", "lib/warp_drive/templates/Rakefile.template", "lib/warp_drive/warp_drive_gem_generator.rb", "lib/warp_drive.rb", "README", "LICENSE", "bin/warpify", "bin/install_warp_drive"]
+  s.files = ["lib/tasks/compile.rake", "lib/warp_drive/boot/method_list.rb", "lib/warp_drive/boot/migration_override.rb", "lib/warp_drive/boot/procs.rb", "lib/warp_drive/boot/rails_init.rb", "lib/warp_drive/boot/workers.rb", "lib/warp_drive/boot.rb", "lib/warp_drive/configure.rb", "lib/warp_drive/path.rb", "lib/warp_drive/tasks.rb", "lib/warp_drive/templates/lib/%=app%/boot.rb.template", "lib/warp_drive/templates/lib/%=app%/tasks.rb.template", "lib/warp_drive/templates/lib/%=app%.rb.template", "lib/warp_drive/templates/LICENSE.template", "lib/warp_drive/templates/Rakefile.template", "lib/warp_drive/templates/README.template", "lib/warp_drive/warp_drive_gem_generator.rb", "lib/warp_drive.rb", "README", "LICENSE", "bin/warpify", "bin/install_warp_drive"]
   s.homepage = %q{http://www.metabates.com}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{magrathea}
