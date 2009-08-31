@@ -8,9 +8,10 @@ describe UsersController do
     it 'should give you a new user page' do
       get :new
       user = assigns[:user]
+      user.login.should be_nil
       user.should be_new_record
       response.should render_template('new.html.erb')
-      response.layout.should == 'layouts/application'
+      response.layout.should == 'layouts/users'
     end
     
   end

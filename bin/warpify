@@ -1,1 +1,27 @@
+#!/usr/local/bin/ruby
+
 # turns a rails project into a warp drive
+require 'fileutils'
+
+rake_file_path = File.join(FileUtils.pwd, 'Rakefile')
+rake_file = File.read(rake_file_path)
+
+unless rake_file.match(/require 'warp_drive\/tasks'/)
+  print 'Please hold we are converting your application to a Warp Drive...'
+  File.open(rake_file_path, 'a') do |f|
+    f.puts %{
+require 'warp_drive/tasks'
+
+WarpDrive.configure do |config|
+  # Define your gem spec settings here:
+  config.gem.version = "0.0.1"
+  
+  # Add your gem dependencies here:
+  config.dependencies = {'warp_drive' => '>=0.0.1'}
+end
+    }
+  end
+  puts 'completed!'
+else
+  puts 'Your application is already a Warp Drive, so there is nothing to do.'
+end

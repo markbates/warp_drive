@@ -1,0 +1,12 @@
+require File.expand_path(File.join(File.dirname(__FILE__), '..', '<%= app %>'))
+require 'rake'
+
+Dir.glob(File.join(WarpDrive::Path.lib.tasks.to_s, '**', '*.*')).sort.each do |task|
+  load File.expand_path(task) unless task.match(/\/private\//)
+end
+
+Dir.glob(File.join(WarpDrive::Path.vendor.plugins.to_s, '*')).sort.each do |plugin|
+  Dir.glob(File.join(plugin, 'tasks', '**', '*.*')).sort.each do |task|
+    load File.expand_path(task) unless task.match(/\/private\//) 
+  end
+end

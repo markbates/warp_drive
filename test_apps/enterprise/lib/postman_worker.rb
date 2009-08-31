@@ -8,7 +8,7 @@ class PostmanWorker < Delayed::Worker
     self.args = *args
   end
   
-  def perform
+  perform do
     Postman.send(self.called_method, self.args)
   end
   

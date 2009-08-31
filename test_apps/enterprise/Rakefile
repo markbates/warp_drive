@@ -8,3 +8,10 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+require 'warp_drive/tasks'
+
+WarpDrive.configure do |config|
+  config.gem.version = "0.0.2"
+  config.dependencies = {'warp_drive' => '>=0.0.1'}
+end

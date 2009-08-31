@@ -1,11 +1,11 @@
 <html>
   <head>
-    <title><%= params[:controller] %> - <%= params[:action] %></title>
+    <title>Enterprise!</title>
   </head>
   <body>
     <div id='toolbar'>
       <% if current_user -%>
-        <%= link_to('logout', logout_url) %>
+        <%= link_to('Logout', logout_url) %>
       <% else -%>
         <%= link_to('login', login_url) %> | <%= link_to('register', register_url) %>
       <% end -%>

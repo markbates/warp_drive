@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'gemstub'
+
+Gemstub.gem_spec do |s|
+  <% configatron.warp_drive.gem.configatron_keys.each do |key| -%>
+  s.<%= key %> = "<%= configatron.warp_drive.gem.retrieve(key) %>"
+  <% end %>
+  <% configatron.warp_drive.dependencies.each do |name, version| -%>
+  s.add_dependency('<%= name %>', '<%= version %>')
+  <% end %>
+  s.files = FileList['lib/**/*.*', 'bin/**/*.*']
+end

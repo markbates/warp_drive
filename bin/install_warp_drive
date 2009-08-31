@@ -1,1 +1,40 @@
+#!/usr/local/bin/ruby
+
 # adds a warp drive to a rails project
+
+warp_drive_name = ARGV[0]
+
+if warp_drive_name.nil?
+  puts "You must specify the name of a warp drive you want to install!"
+  exit(1)
+end
+
+rake_file_path = File.join(FileUtils.pwd, 'Rakefile')
+rake_file = File.read(rake_file_path)
+env_file_path = File.join(FileUtils.pwd, 'config', 'environment.rb')
+env_file = File.read(env_file_path)
+
+if rake_file.match(/require 'warp_drive\/tasks'/) && env_file.match(/require '#{warp_drive_name}\/boot'/)
+   puts 'We have already installed this Warp Drive, so there is nothing to do.'
+else
+  print 'Please hold while we install your Warp Drive...'
+
+  File.open(rake_file_path, 'a') do |f|
+    f.puts %{
+begin
+  require '#{warp_drive_name}/tasks'
+rescue Exception => e
+  puts e.message
+end
+}
+  end
+  
+  File.open(env_file_path, 'w') do |f|
+    f.puts env_file.gsub(%{require File.join(File.dirname(__FILE__), 'boot')}, %{
+require File.join(File.dirname(__FILE__), 'boot')
+require '#{warp_drive_name}/boot'
+})
+  end
+  
+  puts 'completed!'
+end

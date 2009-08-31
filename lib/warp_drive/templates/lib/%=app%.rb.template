@@ -1,0 +1,5 @@
+module WarpDrive
+  ROOT = File.dirname(__FILE__)
+end
+
+require 'warp_drive'

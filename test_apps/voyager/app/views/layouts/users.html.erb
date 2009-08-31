@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Voyager!</title>
+  </head>
+  <body>
+    <div id='toolbar'>
+      <% if current_user -%>
+        <%= link_to('Logout', logout_url) %>
+      <% else -%>
+        <%= link_to('login', login_url) %> | <%= link_to('register', register_url) %>
+      <% end -%>
+    </div>
+    
+    <div id='notice'>
+      <% if flash[:notice] -%>
+        <%= flash[:notice] %>
+      <% end -%>
+    </div>
+    
+    <%= yield %>
+    
+  </body>
+</html>
