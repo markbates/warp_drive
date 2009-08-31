@@ -1,5 +1,5 @@
 module WarpDrive
-  ROOT = File.dirname(__FILE__)
+  ROOT = File.dirname(__FILE__) unless defined?(ROOT)
 end
 
 require 'warp_drive'
