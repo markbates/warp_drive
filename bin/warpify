@@ -17,7 +17,7 @@ WarpDrive.configure do |config|
   config.gem.version = "0.0.1"
   
   # Add your gem dependencies here:
-  config.dependencies = {'warp_drive' => '>=0.0.1'}
+  config.dependencies = {'warp_drive' => '>=0.1.0'}
 end
     }
   end

@@ -4,8 +4,9 @@ require 'gemstub'
 Gemstub.test_framework = :rspec
 
 Gemstub.gem_spec do |s|
-  # s.version = "0.0.1"
-  # s.rubyforge_project = "warp_drive"
+  s.description = %{Screw Rails Engines! Why not install a Warp Drive! Completely bundle up an ENTIRE Rails application into a gem, then load it into another application! It's that easy!}
+  s.version = "0.1.0"
+  s.rubyforge_project = "magrathea"
   s.add_dependency('configatron')
   s.add_dependency('genosaurus')
   s.executables << 'warpify'
