@@ -20,11 +20,11 @@ Let's assume we have an application that implements AuthLogic for handling user 
 
 We want to turn our authenticator application into a Warp Drive. We can do it in three simple steps, the first two steps you only need to do the first time, to set everything up.
 
-# $ gem install warp_drive
-# $ warpify
-  That will add a little bit of code to your Rakefile. That code simply requires the Warp Drive gem, and gives you hooks to configure the gem of your Warp Drive application.
-# $ rake warp_drive:compile (rake warp_drive:install)
-  This will either compile your gem for your (warp_drive:compile) or compile and install your gem (warp_drive:install)
+# <code>$ gem install warp_drive</code>
+# <code>$ warpify</code>
+  That will add a little bit of code to your <code>Rakefile</code>. That code simply requires the Warp Drive gem, and gives you hooks to configure the gem of your Warp Drive application.
+# $ <code>rake warp_drive:compile</code> (<code>rake warp_drive:install</code>)
+  This will either compile your gem for your (<code>warp_drive:compile</code>) or compile and install your gem (<code>warp_drive:install</code>)
   
 That's it! You should now have your Rails application bundled up and/or installed as a RubyGem!
 
@@ -37,5 +37,43 @@ With your fancy new Warp Drive, authenticator, built and installed how do you us
 That will put a few lines of code in your Rakefile, so you have access to all the <code>Rakefile</code> tasks in your Warp Drive, and a line in your <code>config/environment.rb</code> so that it will load your Warp Drive when you launch your application.
 
 That's it! You're done. Now you can run <code>rake db:migrate</code> to run the migrations from both your Warp Drive and your new application. Enjoy!
+
+h3. Overriding, Extending, and Other Such Fun Things
+
+h2. Overriding and Extending
+
+You've been enjoying your new Warp Drive back application for a little while now, but you decide you really need to change an action in your controller, how do you go about that? Simple, just like you would any normal alteration to a Ruby class.
+
+Example:
+Here is what the action looks like in our Warp Drive UsersController:
+
+<pre><code>
+  def new
+    @user = User.new
+  end
+</code></pre>
+
+In our new application we can just open up the UsersController like this:
+
+<pre><code>
+  class UsersController < ApplicationController
+
+    def new_with_default_name
+      new_without_default_name
+      @user.login = 'default_name'
+    end
+
+    alias_method_chain :new, :default_name
+
+  end
+</code></pre>
+
+Viola! The same works for any thing else in the system, models, libs, etc... In our example we used <code>alias_method_chain</code> to retain the original method, but we could have completely rewritten the method as well.
+
+You can also plop in a new view and it will override the view that was in your Warp Drive. The sky is really the limit.
+
+h2. Assets
+
+You can easily bundle assets from your public directory in your Warp Drive. Just make sure they are in folders called <code>warp_drive</code>. Those folders will then be symlinked to your new project's public directory when the application starts up.
 
 Copyright (c) 2009 Mark Bates
