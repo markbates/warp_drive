@@ -1,3 +1,23 @@
-README
-========================================================================
-warp_drive was developed by: markbates
+h1. Warp Drive
+
+h2. What is Warp Drive?
+
+Warp Drive is what Rails Engines wish they could be, and more! They kick Rails templates in the ass, and they beat keeping an ever evolving base Rails app up to date.
+
+h3. What are Rails Engines?
+
+Rails Engines allow you to package up some of a Rails app (controllers, models, views, routes, libs) and put them in a plugin that can be included into a new Rails app, thereby giving it the functionality you had in the engine. That sounds good, but what about the downsides of using an engine? Well, you can't override or extend any of the functionality from the engine in your main application. You can hack at the plugin, but now you've made it difficult to update. So what do you do if you want to add or alter a method to a controller or model? What do you do if you want to change the look and feel of a view? You have to copy everything into your main application. Boo!
+
+Rails Engines also don't allow you to package up migrations, assets, plugins, initializers, etc... All the fun stuff that you've come to know and love about a Rails application.
+
+h3. Enter the Warp Drive!
+
+So what is a Warp Drive? Great question. To put it simply a Warp Drive is a standard, full featured, Rails application that you can easily bundle up into a Ruby Gem, and include into another Rails app. That second Rails app now has all the power of the first Rails. That is all there is to it.
+
+Let's assume we have an application that implements AuthLogic for handling user registration/authentication. We have controllers, views, models, plugins, initializers, configurations, migrations, tasks, etc... it's a full featured fully functional Rails application, we call it authenticator.
+
+We want to turn our authenticator application into a Warp Drive. We can do it in three simple steps.
+
+1. $ gem install warp_drive
+2. $ warpify
+  That will add a little bit of code to your Rakefile.
