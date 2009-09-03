@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{warp_drive}
-  s.version = "0.1.4.20090831155551"
+  s.version = "0.1.5.20090903142132"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
-  s.date = %q{2009-08-31}
+  s.date = %q{2009-09-03}
   s.description = %q{Screw Rails Engines! Why not install a Warp Drive! Completely bundle up an ENTIRE Rails application into a gem, then load it into another application! It's that easy!}
   s.email = %q{mark@markbates.com}
   s.executables = ["warpify", "install_warp_drive"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://www.metabates.com}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{magrathea}
-  s.rubygems_version = %q{1.3.4}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{warp_drive}
 
   if s.respond_to? :specification_version then
