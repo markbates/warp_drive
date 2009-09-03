@@ -1,11 +1,11 @@
 module WarpDrive
   extend self
   # --- RAILS --- #
-  def load_plugins
+  def load_plugins # :nodoc:
     Rails.configuration.plugin_paths << WarpDrive::Path.vendor.plugins.to_s
   end
 
-  def set_load_path
+  def set_load_path # :nodoc:
     Rails.configuration.load_paths = [Rails.configuration.load_paths,
                                       WarpDrive::Path.lib.to_s,
                                       WarpDrive::Path.app.to_s,
@@ -14,7 +14,7 @@ module WarpDrive
                                       WarpDrive::Path.app.helpers.to_s].flatten
   end
   
-  def load_gems
+  def load_gems # :nodoc:
     begin
       require('gemtronics')
 
@@ -31,22 +31,22 @@ module WarpDrive
 
   end
   
-  def initialize_routing
+  def initialize_routing # :nodoc:
     ActionController::Routing::Routes.add_configuration_file(WarpDrive::Path.config.routes.rb.to_s)
   end
   
-  def load_view_paths
+  def load_view_paths # :nodoc:
     ActionController::Base.view_paths = [ActionController::Base.view_paths,
                                          WarpDrive::Path.app.views.to_s].flatten
     ActionMailer::Base.view_paths = ActionController::Base.view_paths
   end
   
-  def initialize_dependency_mechanism
+  def initialize_dependency_mechanism # :nodoc:
     ActiveSupport::Dependencies.class_eval do
       class << self
         alias_method :require_or_load_without_warp_drive, :require_or_load
 
-        def require_or_load_with_warp_drive(file_name, const_path = nil)
+        def require_or_load_with_warp_drive(file_name, const_path = nil) # :nodoc:
           sr_file_name = file_name.gsub(RAILS_ROOT, WarpDrive::ROOT)
           require_or_load_without_warp_drive(sr_file_name, const_path) if File.exists?(sr_file_name)
           require_or_load_without_warp_drive(file_name, const_path)
@@ -57,9 +57,9 @@ module WarpDrive
     end
   end
   
-  def initialize_database
+  def initialize_database # :nodoc:
     Rails.configuration.instance_eval do
-      def database_configuration
+      def database_configuration # :nodoc:
         require 'erb'
         db_opts = {}
         
@@ -76,20 +76,20 @@ module WarpDrive
     end # Rails.configuration.instance_eval
   end
   
-  def load_application_initializers
+  def load_application_initializers # :nodoc:
     Dir[File.join(WarpDrive::Path.config.initializers.to_s, '**', '*.rb')].sort.each do |initializer|
       initializer = File.expand_path(initializer)
       load(initializer)
     end
   end
   
-  def initialize_database_middleware
+  def initialize_database_middleware # :nodoc:
     require File.join(File.dirname(__FILE__), 'migration_override')
   end
   
   # --- Non-RAILS --- #
 
-  def load_rake_tasks
+  def load_rake_tasks # :nodoc:
     require 'rake'
     Dir.glob(File.join(WarpDrive::Path.lib.tasks.to_s, '**', '*.*')).sort.each do |task|
       load File.expand_path(task) unless task.match(/\/private\//)
@@ -101,7 +101,7 @@ module WarpDrive
     end
   end
   
-  def load_assets
+  def load_assets # :nodoc:
     Dir.glob(File.join(WarpDrive::ROOT, 'public', '**', 'warp_drive', '**', '*.*')).sort.each do |f|
       f.match(/public\/(.*warp_drive)/)
       base_path = $1
@@ -115,7 +115,7 @@ module WarpDrive
     end
   end
   
-  def method_missing(sym, *args)
+  def method_missing(sym, *args) # :nodoc:
     # puts "Tried to call WarpDrive.#{sym} but it doesn't exist!"
   end
   

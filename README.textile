@@ -34,13 +34,13 @@ With your fancy new Warp Drive, authenticator, built and installed how do you us
 
 # $ install_warp_drive authenticator
 
-That will put a few lines of code in your Rakefile, so you have access to all the <code>Rakefile</code> tasks in your Warp Drive, and a line in your <code>config/environment.rb</code> so that it will load your Warp Drive when you launch your application.
+That will put a few lines of code in your <code>Rakefile</code>, so you have access to all the <code>Rakefile</code> tasks in your Warp Drive, and a line in your <code>config/environment.rb</code> so that it will load your Warp Drive when you launch your application.
 
 That's it! You're done. Now you can run <code>rake db:migrate</code> to run the migrations from both your Warp Drive and your new application. Enjoy!
 
-h3. Overriding, Extending, and Other Such Fun Things
+h2. Overriding, Extending, and Other Such Fun Things
 
-h2. Overriding and Extending
+h3. Overriding and Extending
 
 You've been enjoying your new Warp Drive back application for a little while now, but you decide you really need to change an action in your controller, how do you go about that? Simple, just like you would any normal alteration to a Ruby class.
 
@@ -72,8 +72,24 @@ Viola! The same works for any thing else in the system, models, libs, etc... In 
 
 You can also plop in a new view and it will override the view that was in your Warp Drive. The sky is really the limit.
 
-h2. Assets
+h3. Assets
 
 You can easily bundle assets from your public directory in your Warp Drive. Just make sure they are in folders called <code>warp_drive</code>. Those folders will then be symlinked to your new project's public directory when the application starts up.
+
+h3. Keep Those Rake Tasks Private!
+
+We all them, Rake tasks we have created to help us do all sorts of things, and we usually don't want them to ship. Well, Warp Drive has you covered there. Just place your tasks in folders called <code>private</code> and Bob's your uncle they won't be available in the compiled gem.
+
+h4. Example:
+
+<pre><code>
+  lib/
+    tasks/
+      foo.rake
+      private/
+        bar.rake
+</code></pre>
+
+In this example <code>foo.rake</code> will be available to clients of your Warp Drive, but <code>bar.rake</code> will not be.
 
 Copyright (c) 2009 Mark Bates

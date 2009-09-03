@@ -1,5 +1,5 @@
-module ActiveRecord
-  class Migrator
+module ActiveRecord # :nodoc:
+  class Migrator # :nodoc:
   
     migs = []
     migs << ActiveRecord::Migrator.new(:up, WarpDrive::Path.db.migrate).migrations

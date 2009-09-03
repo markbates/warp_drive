@@ -16,5 +16,5 @@ Gemstub.gem_spec do |s|
 end
 
 Gemstub.rdoc do |rd|
-  rd.title = "warp_drive"
+  rd.title = "Warp Drive"
 end

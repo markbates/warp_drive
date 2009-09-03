@@ -1,4 +1,4 @@
-class WarpDriveGemGenerator < Genosaurus
+class WarpDriveGemGenerator < Genosaurus # :nodoc:
   require_param :app
   require_param :out_dir
   

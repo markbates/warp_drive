@@ -1,4 +1,9 @@
 module WarpDrive
+  # This class allows you to easily get the location of any file or path in a Warp Drive gem.
+  # 
+  # Example:
+  #   WarpDrive::Path.app.controllers.application_controller.rb
+  #   # => "/usr/local/lib/ruby/gems/1.8/gems/my_warp_drive_gem-1.2.3/lib/app/controllers/application_controller.rb"
   class Path
 
     attr_accessor :parent

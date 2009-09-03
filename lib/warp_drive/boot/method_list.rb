@@ -37,6 +37,6 @@ module WarpDrive
     load_view_paths
     load_application_classes
     disable_dependency_loading
-  }
+  } # :nodoc:
   
 end

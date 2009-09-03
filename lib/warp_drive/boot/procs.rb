@@ -1,5 +1,5 @@
 module WarpDrive
-  module Procs
+  module Procs # :nodoc:
     
     class << self
       

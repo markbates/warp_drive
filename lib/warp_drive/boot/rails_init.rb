@@ -1,5 +1,5 @@
-module Rails
-  class Initializer
+module Rails # :nodoc:
+  class Initializer # :nodoc:
     
     WarpDrive::RAILS_INIT_METHODS.each do |meth|
       alias_method "#{meth}_without_warp_drive", meth
