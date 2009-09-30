@@ -6,7 +6,7 @@ namespace :warp_drive do
     require path
     $genosaurus_output_directory = File.join(pwd, 'tmp', File.basename(pwd))
     FileUtils.rm_rf($genosaurus_output_directory, :verbose => false)
-    WarpDriveGemGenerator.run('APP' => File.basename(pwd), 'OUT_DIR' => File.join(pwd, 'tmp', File.basename(pwd)))
+    WarpDriveGemGenerator.run('APP' => configatron.warp_drive.gem.retrieve(:name, File.basename(pwd)), 'OUT_DIR' => File.join(pwd, 'tmp', File.basename(pwd)))
 
     sh "cd #{$genosaurus_output_directory}; rake package"
     # FileUtils.rm_rf($genosaurus_output_directory, :verbose => false)
