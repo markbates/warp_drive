@@ -15,9 +15,11 @@ require 'warp_drive/tasks'
 WarpDrive.configure do |config|
   # Define your gem spec settings here:
   config.gem.version = "0.0.1"
+  config.gem.name = '#{FileUtils.pwd}'
   
   # Add your gem dependencies here:
-  config.dependencies = {'warp_drive' => '>=0.1.4'}
+  config.dependencies = {'warp_drive' => '>=0.1.8'}
+  
 end
     }
   end

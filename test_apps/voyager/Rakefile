@@ -8,7 +8,6 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
-
 begin
   require 'enterprise/tasks'
 rescue Exception => e

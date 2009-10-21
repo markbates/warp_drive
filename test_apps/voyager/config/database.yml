@@ -2,3 +2,5 @@
 
 test: &TEST
   timeout: 4000
+cucumber:
+  <<: *TEST

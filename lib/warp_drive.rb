@@ -14,6 +14,18 @@ class Hash # :nodoc:
 
 end # Hash
 
+module Kernel # :nodoc:
+  
+  def run_once
+    path = File.expand_path(caller.first)
+    unless ($__already_run_block ||= []).include?(path)
+      yield
+      $__already_run_block << path
+    end
+  end
+  
+end
+
 
 require 'configatron'
 require 'genosaurus'
