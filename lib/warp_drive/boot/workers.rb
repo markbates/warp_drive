@@ -32,7 +32,12 @@ module WarpDrive
   end
   
   def initialize_routing # :nodoc:
+    return unless Rails.configuration.frameworks.include?(:action_controller)
+
+    ActionController::Routing.controller_paths += Rails.configuration.controller_paths
+    ActionController::Routing::Routes.add_configuration_file(Rails.configuration.routes_configuration_file)
     ActionController::Routing::Routes.add_configuration_file(WarpDrive::Path.config.routes.rb.to_s)
+    ActionController::Routing::Routes.reload!
   end
   
   def load_view_paths # :nodoc:

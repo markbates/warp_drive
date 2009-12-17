@@ -19,6 +19,12 @@ module WarpDrive
         end          
       end
       
+      def initialize_routing
+        Proc.new do
+          WarpDrive.initialize_routing
+        end
+      end
+      
       def method_missing(meth, *args)
         Proc.new do
           WarpDrive.send(meth)
