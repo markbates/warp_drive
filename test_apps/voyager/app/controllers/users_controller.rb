@@ -7,4 +7,7 @@ class UsersController < ApplicationController
   
   alias_method_chain :new, :default_name
   
+  def foo
+  end
+  
 end

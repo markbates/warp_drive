@@ -30,6 +30,8 @@ module NavigationHelpers
       new_password_reset_path
     when /a bad password reset page/
       password_reset_path('345678')
+    when /the foo page/
+      '/foo'
       
     
     # Add more mappings here.
