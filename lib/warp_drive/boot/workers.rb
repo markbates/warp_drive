@@ -32,11 +32,17 @@ module WarpDrive
   end
   
   def initialize_routing # :nodoc:
+    # this method is a copy/paste of the method of the same name in the rails 2.3.4 initializer.rb
+    # we're doing this to be able to insert the warp drive routes at the correct place in the 
+    # routes list to be able to override them with client applications
     return unless Rails.configuration.frameworks.include?(:action_controller)
 
     ActionController::Routing.controller_paths += Rails.configuration.controller_paths
     ActionController::Routing::Routes.add_configuration_file(Rails.configuration.routes_configuration_file)
+    
+    # this is the only bit we've changed from the rails 2.3.4 initializer.rb
     ActionController::Routing::Routes.add_configuration_file(WarpDrive::Path.config.routes.rb.to_s)
+    
     ActionController::Routing::Routes.reload!
   end
   
